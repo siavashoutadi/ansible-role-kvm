@@ -1,0 +1,9 @@
+---
+
+kvm_packages:
+  - qemu-kvm
+  - libvirt-bin
+  - ubuntu-vm-builder
+  - bridge-utils
+  - libnm-glib-dev
+  - dbus

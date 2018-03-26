@@ -1,0 +1,7 @@
+<pool type='dir'>
+  <name>{{ item }}</name>
+  <capacity>{{ kvm_pools[item]['capacity'] }}</capacity>
+  <target>
+    <path>{{ kvm_pools[item]['path'] }}</path>
+  </target>
+</pool>

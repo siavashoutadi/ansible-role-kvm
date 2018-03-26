@@ -1,0 +1,36 @@
+---
+
+- name: Create bridge networks
+  become: true
+  nmcli:
+    conn_name: "{{ item }}"
+    ifname: "{{ item }}"
+    type: bridge
+    ip4: "{{ kvm_network_bridges[item]['ip4'] }}"
+    gw4: "{{ kvm_network_bridges[item]['gw4'] }}"
+    stp: no
+    autoconnect: yes
+    state: present
+  with_items: "{{ kvm_network_bridges }}"
+
+- name: Create virtual networks
+  become: true
+  virt_net:
+    name: "{{ item }}"
+    command: define
+    xml: "{{ lookup('template', 'net.xml.j2') }}"
+  with_items: "{{ kvm_virtual_networks }}"
+
+- name: Change the virtual networks state to active
+  become: true
+  virt_net:
+    name: "{{ item }}"
+    state: active
+  with_items: "{{ kvm_virtual_networks }}"
+
+- name: Ensure the virtual networks are started on boot
+  become: true
+  virt_net:
+    name: "{{ item }}"
+    autostart: yes
+  with_items: "{{ kvm_virtual_networks }}"
