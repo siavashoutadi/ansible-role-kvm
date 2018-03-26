@@ -1,0 +1,11 @@
+---
+
+kvm_packages:
+  - qemu-kvm
+  - libvirt
+  - virt-install
+  - libvirt-python
+  - virt-manager
+  - libvirt-client
+  - NetworkManager-glib
+  - dbus

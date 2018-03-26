@@ -1,0 +1,14 @@
+---
+
+- name: Include os specific vars
+  include_vars: "{{ item }}"
+  with_first_found:
+    - "vars/{{ ansible_os_family }}.yml"
+
+- import_tasks: validate.yml
+
+- import_tasks: install.yml
+
+- import_tasks: network.yml
+
+- import_tasks: pool.yml

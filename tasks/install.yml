@@ -1,0 +1,13 @@
+---
+
+- name: Install Packages
+  package:
+    name: "{{ kvm_packages | join(',') }}"
+    state: installed
+
+- name: Ensure the libvirt daemon is started and enabled
+  service:
+    name: libvirtd
+    state: started
+    enabled: yes
+  become: True
