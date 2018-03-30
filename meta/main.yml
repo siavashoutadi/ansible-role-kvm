@@ -1,0 +1,22 @@
+galaxy_info:
+  author: Siavash Outadi
+  description: Ansible role to install KVM host
+  company: N/A
+
+  license: license (Apache)
+
+  min_ansible_version: 2.5
+
+  platforms:
+    - name: Ubuntu
+      versions:
+      - xenial
+    - name: EL
+      versions:
+      - 7
+
+  galaxy_tags:
+    - KVM
+    - Virtualization
+
+dependencies: []
