@@ -18,10 +18,12 @@ Role Variables
 # BRIDGE_NAME:
 #   ip4: IP/PREFIX
 #   gw4: GW IP
+#   slave: Physical interface name
 # Example:
 # kvm-br0:
 #    ip4: 192.168.0.21/24
 #    gw4: 192.168.0.1
+#    slave: enp3s0
 kvm_network_bridges: []
 
 # The virtual networks to be added
