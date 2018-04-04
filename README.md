@@ -66,6 +66,7 @@ Example Playbook
       kvm-br0:
         ip4: 192.168.0.21/24
         gw4: 192.168.0.1
+        slave: enp3s0
     kvm_virtual_networks:
       virbr1:
         mode: bridge
