@@ -19,11 +19,14 @@ Role Variables
 #   ip4: IP/PREFIX
 #   gw4: GW IP
 #   slave: Physical interface name
+#   dns4: DNS list
 # Example:
 # kvm-br0:
 #    ip4: 192.168.0.21/24
 #    gw4: 192.168.0.1
 #    slave: enp3s0
+#    dns4:
+#      - 8.8.8.8
 kvm_network_bridges: []
 
 # The virtual networks to be added
@@ -69,6 +72,8 @@ Example Playbook
         ip4: 192.168.0.21/24
         gw4: 192.168.0.1
         slave: enp3s0
+        dns4:
+          - 8.8.8.8
     kvm_virtual_networks:
       virbr1:
         mode: bridge

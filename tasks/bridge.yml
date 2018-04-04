@@ -12,6 +12,14 @@
     autoconnect: yes
     state: present
 
+- name: Create bridge network
+  become: true
+  shell: nmcli con mod "{{ item }}" ipv4.dns "{{ kvm_network_bridges[item]['dns4'] | join(',') }}"
+
+- name: Create bridge network
+  become: true
+  shell: nmcli con up "{{ item }}"
+
 - name: Check if slave is created
   shell: nmcli con show "{{ item }}-slave"
   failed_when: slave_exist.rc not in [0, 10]
