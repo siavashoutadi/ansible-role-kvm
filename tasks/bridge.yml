@@ -1,0 +1,13 @@
+---
+
+- name: Create bridge network
+  become: true
+  nmcli:
+    conn_name: "{{ item }}"
+    ifname: "{{ item }}"
+    type: bridge
+    ip4: "{{ kvm_network_bridges[item]['ip4'] }}"
+    gw4: "{{ kvm_network_bridges[item]['gw4'] }}"
+    stp: no
+    autoconnect: yes
+    state: present

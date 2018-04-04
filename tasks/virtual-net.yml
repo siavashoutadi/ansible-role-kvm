@@ -1,0 +1,20 @@
+---
+
+- name: Create virtual network
+  become: true
+  virt_net:
+    name: "{{ item }}"
+    command: define
+    xml: "{{ lookup('template', 'net.xml.j2') }}"
+
+- name: Change the virtual networks state to active
+  become: true
+  virt_net:
+    name: "{{ item }}"
+    state: active
+
+- name: Ensure the virtual networks are started on boot
+  become: true
+  virt_net:
+    name: "{{ item }}"
+    autostart: yes
