@@ -11,3 +11,18 @@
     stp: no
     autoconnect: yes
     state: present
+
+- name: Check if slave is created
+  shell: nmcli con show "{{ item }}-slave"
+  failed_when: slave_exist.rc not in [0, 10]
+  register: slave_exist
+
+- name: Create bridge slave
+  become: true
+  shell: nmcli con add type ethernet con-name "{{ item }}-slave" ifname "{{ kvm_network_bridges[item]['slave'] }}" master "{{ item }}" autoconnect yes
+  when: slave_exist.rc == 10
+
+- name: Stop the ethernet interface
+  become: true
+  shell: nmcli con down "{{ kvm_network_bridges[item]['slave'] }}"
+  failed_when: slave_exist.rc not in [0, 10]
