@@ -11,7 +11,7 @@ No specific requirements.
 Role Variables
 --------------
 
-```ansible
+```yml
 
 # The network brigdes to be created on the host
 # The syntax is:
@@ -63,7 +63,7 @@ N/A
 Example Playbook
 ----------------
 
-```ansible
+```yml
 - name: Install KVM
   hosts: localhost
   vars:
